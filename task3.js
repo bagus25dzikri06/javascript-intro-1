@@ -2,8 +2,8 @@ const printSegitiga = (sisi) => {
   if (typeof sisi === 'number' === true) {
     let dataSisi = ''
     for (let i = sisi; i >= 1; i--) {
-      for (let j = 1; j <= sisi; j++) {
-        dataSisi += j + ' '
+      for (let j = 0; j < i; j++) {
+        dataSisi += (j + 1) + ' '
       }
       dataSisi += '\n'
     }
