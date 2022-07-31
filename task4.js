@@ -28,6 +28,11 @@ let newData = {
 console.log(newData)
 
 //b, Destructuring the street and the city from the user's address
-const { street, city } = newData.address
+const { 
+  address: {
+    street,
+    city
+  }
+} = newData
 
 console.log(street + ', ' + city)
