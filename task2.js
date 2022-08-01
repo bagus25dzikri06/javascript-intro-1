@@ -4,42 +4,32 @@ const batasMaksimum = (element) => element > 100
 let totalNilai = 0
 
 const nilaiRataRataUN = (dataNilai) => {
-  if (typeof dataNilai === 'object' === true) {
-    if (dataNilai.every(isNumber)) {
-      if (dataNilai.some(batasMinimum) === false && dataNilai.some(batasMaksimum) === false) {
-        if (dataNilai.length === 4) {
-          for (let i = 0; i < dataNilai.length; i++) {
-            totalNilai += dataNilai[i]
-          }
-  
-          rataRataNilai = totalNilai / dataNilai.length
-  
-          if (rataRataNilai >= 90 && rataRataNilai <= 100) {
-            return 'Nilai UN total: A'
-          } else if (rataRataNilai >= 80 && rataRataNilai < 90) {
-            return 'Nilai UN total: B'
-          } else if (rataRataNilai >= 70 && rataRataNilai < 80) {
-            return 'Nilai UN total: C'
-          } else if (rataRataNilai >= 60 && rataRataNilai < 70) {
-            return 'Nilai UN total: D'
-          } else if (rataRataNilai >= 0 && rataRataNilai < 60) {
-            return 'Nilai UN total: E'
-          } else {
-            return 'Nilai UN melebihi batas rata-rata'
-          }
-        } else if (dataNilai.length >= 4) {
-          return 'Input setiap data nilai cukup berjumlah 4 saja'
-        } else {
-          return 'Input setiap data nilai harus berjumlah 4'
-        }
-      } else {
-        return 'Input nilai tidak valid'
-      }
-    } else {
-      return 'Input setiap data nilai harus berupa angka'
+  try {
+    if (typeof dataNilai === 'object' === false) throw 'Input data nilai harus berupa array'
+    if (dataNilai.every(isNumber) === false) throw 'Input setiap data nilai harus berupa angka'
+    if (dataNilai.length < 4) throw 'Input setiap data nilai harus berjumlah 4'
+    if (dataNilai.length > 4) throw 'Input setiap data nilai cukup berjumlah 4'
+    if (dataNilai.some(batasMinimum) === true && dataNilai.some(batasMaksimum) === true) throw 'Input nilai tidak valid'
+
+    for (let i = 0; i < dataNilai.length; i++) {
+      totalNilai += dataNilai[i]
     }
-  } else {
-    return 'Input data nilai harus berupa array'
+
+    rataRataNilai = totalNilai / dataNilai.length
+
+    if (rataRataNilai >= 90 && rataRataNilai <= 100) {
+      return 'Nilai UN total: A'
+    } else if (rataRataNilai >= 80 && rataRataNilai < 90) {
+      return 'Nilai UN total: B'
+    } else if (rataRataNilai >= 70 && rataRataNilai < 80) {
+      return 'Nilai UN total: C'
+    } else if (rataRataNilai >= 60 && rataRataNilai < 70) {
+      return 'Nilai UN total: D'
+    } else if (rataRataNilai >= 0 && rataRataNilai < 60) {
+      return 'Nilai UN total: E'
+    }
+  } catch (err) {
+    return err
   }
 }
 

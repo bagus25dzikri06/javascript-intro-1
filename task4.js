@@ -27,7 +27,7 @@ let newData = {
 
 console.log(newData)
 
-//b, Destructuring the street and the city from the user's address
+//b. Destructuring the street and the city from the user's address
 const { 
   address: {
     street,

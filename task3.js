@@ -1,15 +1,17 @@
 const printSegitiga = (sisi) => {
-  if (typeof sisi === 'number' === true) {
+  try {
+    if (typeof sisi === 'number' === false) throw 'Data harus number'
+
     let dataSisi = ''
     for (let i = sisi; i >= 1; i--) {
       for (let j = 0; j < i; j++) {
-        dataSisi += (j + 1) + ' '
+        dataSisi += `${j + 1} `
       }
       dataSisi += '\n'
     }
     return dataSisi
-  } else {
-    return 'Data harus number'
+  } catch (err) {
+    return err
   }
 }
 
